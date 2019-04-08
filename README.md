@@ -17,7 +17,7 @@ public class Runner {
         //Register your parseobject subclasses before usage.
         //ParseObject.registerSubclass(Post.class);
         
-        Parse.initialize(new Parse.Configuration.Builder(new Context())
+        Parse.initialize(new Parse.Configuration.Builder()
                 .applicationId("YOUR_APP_ID")
                 .masterKey("YOUR_MASTER_KEY") // Optional Master Key for Importing Data in Bulk
                 .clientKey("YOUR_CLIENT_KEY")
