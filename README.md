@@ -1,5 +1,5 @@
 # Parse-SDK-Java
-Parse SDK for Java ported from the Parse SDK for Android(https://github.com/parse-community/Parse-SDK-Android)
+Parse SDK for Java ported from the [Parse SDK for Android](https://github.com/parse-community/Parse-SDK-Android)
 
 A library that gives you access to the powerful Parse cloud platform from your Java application.
 For more information about Parse and its features, see [the website](https://parseplatform.org/), [getting started][guide], and [blog](https://blog.parseplatform.org/).
