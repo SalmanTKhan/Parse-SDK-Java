@@ -555,6 +555,10 @@ public class Parse {
                 this.context = context;
             }
 
+            public Builder() {
+                this.context = new Context();
+            }
+
             /**
              * Set the application id to be used by Parse.
              *
