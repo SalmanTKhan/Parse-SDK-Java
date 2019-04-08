@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Bolts-Java/Bolts-Java.iml" filepath="$PROJECT_DIR$/Bolts-Java/Bolts-Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Parse-SDK-Java.iml" filepath="$PROJECT_DIR$/Parse-SDK-Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParseLiveQuery-Java/ParseLiveQuery-Java.iml" filepath="$PROJECT_DIR$/ParseLiveQuery-Java/ParseLiveQuery-Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SQLite-Java/SQLite-Java.iml" filepath="$PROJECT_DIR$/SQLite-Java/SQLite-Java.iml" />
+    </modules>
+  </component>
+</project>
