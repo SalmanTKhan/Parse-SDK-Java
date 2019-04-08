@@ -14,6 +14,7 @@ import com.parse.ParseObject;
 public class Runner {
     public static void main(String[] args) {
 
+        //Register your parseobject subclasses before usage.
         //ParseObject.registerSubclass(Post.class);
         
         Parse.initialize(new Parse.Configuration.Builder(new Context())
