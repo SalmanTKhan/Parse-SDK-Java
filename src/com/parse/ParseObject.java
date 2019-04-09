@@ -2942,6 +2942,11 @@ public class ParseObject {
         }
     }
 
+    public void put(@NotNull String key, Object value) {
+        if (value != null)
+            putNotNull(key, value);
+    }
+
     /**
      * Add a key-value pair to this object. It is recommended to name keys in
      * <code>camelCaseLikeThis</code>.
@@ -2950,7 +2955,7 @@ public class ParseObject {
      * @param value Values may be numerical, {@link String}, {@link JSONObject}, {@link JSONArray},
      *              {@link JSONObject#NULL}, or other {@code ParseObject}s. value may not be {@code null}.
      */
-    public void put(@NotNull String key, @NotNull Object value) {
+    public void putNotNull(@NotNull String key, @NotNull Object value) {
         checkKeyIsMutable(key);
 
         performPut(key, value);

@@ -48,7 +48,6 @@ class ParseRESTCommand extends ParseRequest<JSONObject> {
     /* package */ final JSONObject jsonParameters;
     // Headers
     private final String sessionToken;
-    public String masterKey;
     /* package */ String httpPath;
     private String installationId;
     private String operationSetUUID;
@@ -91,7 +90,6 @@ class ParseRESTCommand extends ParseRequest<JSONObject> {
         super(builder.method, createUrl(builder.httpPath));
         sessionToken = builder.sessionToken;
         installationId = builder.installationId;
-        masterKey = builder.masterKey;
 
         httpPath = builder.httpPath;
         jsonParameters = builder.jsonParameters;
@@ -212,9 +210,6 @@ class ParseRESTCommand extends ParseRequest<JSONObject> {
         }
         if (sessionToken != null) {
             requestBuilder.addHeader(HEADER_SESSION_TOKEN, sessionToken);
-        }
-        if (masterKey != null) {
-            requestBuilder.addHeader(HEADER_MASTER_KEY, masterKey);
         }
     }
 

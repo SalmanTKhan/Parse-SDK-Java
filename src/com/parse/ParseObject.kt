@@ -83,3 +83,7 @@ inline fun ParseObject.getLongOrNull(key: String): Long? {
 inline fun ParseObject.getDoubleOrNull(key: String): Double? {
     return getNumber(key)?.toDouble()
 }
+
+inline fun <T : ParseObject> ParseObject.getParseObject(key: String): T? {
+    return getParseObject(key) as T?
+}

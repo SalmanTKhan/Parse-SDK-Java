@@ -7,9 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="json-20180813" level="project" />
-    <orderEntry type="module" module-name="Parse-SDK-Java" />
-    <orderEntry type="library" name="okhttp-3.14.0" level="project" />
-    <orderEntry type="module" module-name="Bolts-Java" />
+    <orderEntry type="library" exported="" name="json-20180813" level="project" />
+    <orderEntry type="module" module-name="Parse-SDK-Java" exported="" />
+    <orderEntry type="library" exported="" name="okhttp-3.14.0" level="project" />
+    <orderEntry type="module" module-name="Bolts-Java" exported="" />
+    <orderEntry type="module" module-name="AndroidFramework" />
   </component>
 </module>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidFramework/AndroidFramework.iml" filepath="$PROJECT_DIR$/AndroidFramework/AndroidFramework.iml" />
       <module fileurl="file://$PROJECT_DIR$/Bolts-Java/Bolts-Java.iml" filepath="$PROJECT_DIR$/Bolts-Java/Bolts-Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parse-SDK-Java.iml" filepath="$PROJECT_DIR$/Parse-SDK-Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/ParseLiveQuery-Java/ParseLiveQuery-Java.iml" filepath="$PROJECT_DIR$/ParseLiveQuery-Java/ParseLiveQuery-Java.iml" />

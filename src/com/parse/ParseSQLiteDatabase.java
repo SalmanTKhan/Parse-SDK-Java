@@ -46,6 +46,7 @@ class ParseSQLiteDatabase {
      * Creates a Session which opens a database connection and begins a transaction
      */
     private ParseSQLiteDatabase(int flags) {
+
         //TODO (grantland): if (!writable) -- disable transactions?
         //TODO (grantland): if (!writable) -- do we have to serialize everything?
         openFlags = flags;
@@ -195,7 +196,7 @@ class ParseSQLiteDatabase {
             Task<ResultSet> task = current.onSuccess(new Continuation<Void, ResultSet>() {
                 @Override
                 public ResultSet then(Task<Void> task) {
-                    return db.query(table, select, where, null, null);
+                    return db.query(table, select, where, args, null, null);
                 }
             }, dbExecutor).onSuccess(task1 -> task1.getResult(), dbExecutor);
             current = task.makeVoid();

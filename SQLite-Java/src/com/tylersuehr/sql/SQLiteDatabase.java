@@ -116,9 +116,11 @@ public final class SQLiteDatabase extends SQLiteCloseable {
             if (statement != null) {
                 this.statement.close();
             }
-            if (connection != null) {
-                this.connection.close();
-            }
+            /**
+             if (connection != null) {
+             this.connection.close();
+             }
+             **/
             System.out.println("All references released!");
         } catch (SQLException ex) {
             logException(ex);
@@ -160,7 +162,9 @@ public final class SQLiteDatabase extends SQLiteCloseable {
     public ResultSet query(String table, String[] cols, String selection, String order, String limit) {
         acquireReference();
         try {
+            //final String SQL = SQLBuilder.createQuery(table, cols, selection, order, limit);
             final String SQL = SQLBuilder.createQuery(table, cols, selection, order, limit);
+            System.out.println("SQL: " + SQL);
             return statement.executeQuery(SQL);
         } catch (SQLException ex) {
             logException(ex);
@@ -402,5 +406,22 @@ public final class SQLiteDatabase extends SQLiteCloseable {
 
     public long insertOrThrow(String table, ContentValues values) {
         return insertWithOnConflict(table, values, CONFLICT_NONE);
+    }
+
+    public ResultSet query(String table, String[] columns, String selection, String[] selectionArgs, String order, String limit) {
+        acquireReference();
+        try {
+            //final String SQL = SQLiteQueryBuilder.buildQueryString(false, table, columns, selection, null, null, order, limit);
+            String SQL = SQLBuilder.createQuery(table, columns, selection, order, limit);
+            for (String selectionArg : selectionArgs) {
+                SQL = SQL.replace("?", selectionArg);
+            }
+            return statement.executeQuery(SQL);
+        } catch (SQLException ex) {
+            logException(ex);
+            return null;
+        } finally {
+            releaseReference();
+        }
     }
 }

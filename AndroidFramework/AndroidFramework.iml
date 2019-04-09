@@ -8,11 +8,14 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="KotlinJavaRuntime" level="project" />
-    <orderEntry type="library" exported="" name="annotations-17.0.0" level="project" />
-    <orderEntry type="library" exported="" name="json-20180813" level="project" />
-    <orderEntry type="library" exported="" name="okhttp-3.14.0" level="project" />
-    <orderEntry type="module" module-name="SQLite-Java" exported="" />
-    <orderEntry type="module" module-name="Bolts-Java" exported="" />
-    <orderEntry type="module" module-name="AndroidFramework" exported="" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../libs/annotations-17.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -72,6 +72,7 @@ public abstract class SQLiteOpenHelper implements Closeable {
     public SQLiteOpenHelper(final String dbName, final int version) {
         this.name = (dbName.contains(".db") ? dbName : dbName.concat(".db"));
         this.version = version;
+        getWritableInstance();
     }
 
     @Override

@@ -44,6 +44,9 @@ abstract class SQLiteCloseable implements Closeable {
     @Override
     public final void close() {
         releaseReference();
+        final int count = refs.get();
+        if (count == 0)
+            onAllReferencesReleased();
     }
 
     /**
