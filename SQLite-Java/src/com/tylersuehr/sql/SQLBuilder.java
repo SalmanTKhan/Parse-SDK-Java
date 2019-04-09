@@ -104,17 +104,17 @@ final class SQLBuilder {
     static String createUpdate(String table, ContentValues values, String selection) {
         final StringBuilder sb = new StringBuilder(120);
         sb.append("UPDATE ");
-        sb.append("[").append(table).append("]");
+        sb.append(table);
         sb.append(" SET ");
 
         int i = 0;
         for (String col : values.getKeys()) {
             sb.append((i > 0) ? "," : "");
-            sb.append("[").append(col).append("]");
+            sb.append(col);
             sb.append("=");
 
             if (values.get(col) instanceof String) {
-                sb.append("'").append(values.get(col)).append("'");
+                sb.append("'").append(((String) values.get(col)).replace("'", "''")).append("'");
             } else {
                 sb.append(values.get(col));
             }
@@ -139,40 +139,44 @@ final class SQLBuilder {
     static String createDelete(String table, String where, String[] whereArgs) {
         final StringBuilder sb = new StringBuilder();
         sb.append("DELETE FROM ");
-        sb.append("[").append(table).append("]");
+        sb.append(table);
         sb.append(where != null ? " WHERE " + where : "");
-        for (String whereArg : whereArgs) {
-            sb.append(" = " + whereArg);
-        }
+        /**
+         for (String whereArg : whereArgs) {
+         sb.append(" = " + whereArg);
+         }
+         **/
         sb.append(";");
         return sb.toString();
     }
 
     public static String createInsertWithOnConflict(String table, ContentValues values, int conflictAlgorithm) {
-        StringBuilder sql = new StringBuilder();
-        sql.append("INSERT");
-        sql.append(CONFLICT_VALUES[conflictAlgorithm]);
-        sql.append(" INTO ");
-        sql.append(table);
-        sql.append('(');
-        Object[] bindArgs = null;
-        int size = (values != null && !values.isEmpty())
-                ? values.size() : 0;
-        if (size > 0) {
-            bindArgs = new Object[size];
-            int i = 0;
-            for (String colName : values.keySet()) {
-                sql.append((i > 0) ? "," : "");
-                sql.append(colName);
-                bindArgs[i++] = values.get(colName);
-            }
-            sql.append(')');
-            sql.append(" VALUES (");
-            for (i = 0; i < size; i++) {
-                sql.append((i > 0) ? ",?" : "?");
-            }
+        StringBuilder sb = new StringBuilder();
+        sb.append("INSERT");
+        sb.append(CONFLICT_VALUES[conflictAlgorithm]);
+        sb.append(" INTO ");
+        sb.append(table);
+        sb.append(" (");
+
+        int i = 0;
+        for (String col : values.getKeys()) {
+            sb.append((i > 0) ? "," : "");
+            sb.append(col);
+            i++;
         }
-        sql.append(')');
-        return sql.toString();
+        sb.append(") VALUES (");
+
+        i = 0;
+        for (Object o : values.getData()) {
+            sb.append((i > 0) ? "," : "");
+            if (o instanceof String) {
+                sb.append("'").append(o).append("'");
+            } else {
+                sb.append(o);
+            }
+            i++;
+        }
+        sb.append(");");
+        return sb.toString();
     }
 }

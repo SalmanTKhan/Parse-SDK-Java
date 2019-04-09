@@ -224,6 +224,9 @@ public final class SQLiteDatabase extends SQLiteCloseable {
     public Integer update(String table, ContentValues values, String selection, String[] args) {
         acquireReference();
         try {
+            for (String selectionArg : args) {
+                selection = selection.replaceFirst("\\?", "'" + selectionArg + "'");
+            }
             final String SQL = SQLBuilder.createUpdate(table, values, selection);
             this.statement.executeUpdate(SQL);
             this.connection.commit();
@@ -257,6 +260,9 @@ public final class SQLiteDatabase extends SQLiteCloseable {
     public int delete(String table, String where, String[] args) {
         acquireReference();
         try {
+            for (String selectionArg : args) {
+                where = where.replaceFirst("\\?", "'" + selectionArg + "'");
+            }
             final String SQL = SQLBuilder.createDelete(table, where, args);
             this.statement.executeUpdate(SQL);
             this.connection.commit();

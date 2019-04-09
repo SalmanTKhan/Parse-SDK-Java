@@ -156,8 +156,8 @@ class OfflineStore {
                             return existing;
                         }
 
-                        String className = cursor.getString(0);
-                        String objectId = cursor.getString(1);
+                        String className = cursor.getString(1);
+                        String objectId = cursor.getString(2);
                         cursor.close();
                         @SuppressWarnings("unchecked")
                         T pointer = (T) ParseObject.createWithoutData(className, objectId);
@@ -262,7 +262,7 @@ class OfflineStore {
                 List<String> uuids = new ArrayList<>();
                 try {
                     while (cursor.next()) {
-                        uuids.add(cursor.getString(0));
+                        uuids.add(cursor.getString(1));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -421,7 +421,7 @@ class OfflineStore {
                                 cursor.close();
                                 throw new IllegalStateException("Attempted to find non-existent uuid " + uuid.get());
                             }
-                            String json = cursor.getString(0);
+                            String json = cursor.getString(1);
                             cursor.close();
 
                             return json;
@@ -475,8 +475,8 @@ class OfflineStore {
                                     }
 
                                     // we should fetch its data and record its UUID for future reference.
-                                    String jsonString = cursor.getString(0);
-                                    String newUUID = cursor.getString(1);
+                                    String jsonString = cursor.getString(1);
+                                    String newUUID = cursor.getString(2);
                                     cursor.close();
 
                                     synchronized (lock) {
@@ -741,7 +741,7 @@ class OfflineStore {
                 ResultSet cursor = task.getResult();
                 try {
                     while (cursor.next())
-                        uuidsToDelete.add(cursor.getString(0));
+                        uuidsToDelete.add(cursor.getString(1));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -975,7 +975,7 @@ class OfflineStore {
                 List<String> uuids = new ArrayList<>();
                 try {
                     while (cursor.next()) {
-                        uuids.add(cursor.getString(0));
+                        uuids.add(cursor.getString(1));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
