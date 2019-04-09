@@ -1,6 +1,6 @@
 package com.parse.livequery;
 
-import android.util.Log;
+import com.parse.PLog;
 import okhttp3.*;
 import okio.ByteString;
 
@@ -49,7 +49,7 @@ public class OkHttp3SocketClientFactory implements WebSocketClientFactory {
 
             @Override
             public void onMessage(WebSocket webSocket, ByteString bytes) {
-                Log.w(LOG_TAG, String.format(Locale.US,
+                PLog.w(LOG_TAG, String.format(Locale.US,
                         "Socket got into inconsistent state and received %s instead.",
                         bytes.toString()));
             }

@@ -1,6 +1,5 @@
 package com.parse.livequery;
 
-import android.util.Log;
 import bolts.Continuation;
 import bolts.Task;
 import com.parse.*;
@@ -86,7 +85,7 @@ class ParseLiveQueryClientImpl implements ParseLiveQueryClient {
         if (isConnected()) {
             sendSubscription(subscription);
         } else if (userInitiatedDisconnect) {
-            Log.w(LOG_TAG, "Warning: The client was explicitly disconnected! You must explicitly call .reconnect() in order to process your subscriptions.");
+            PLog.w(LOG_TAG, "Warning: The client was explicitly disconnected! You must explicitly call .reconnect() in order to process your subscriptions.");
         } else {
             connectIfNeeded();
         }
@@ -383,7 +382,7 @@ class ParseLiveQueryClientImpl implements ParseLiveQueryClient {
                     public Void then(Task<Void> task) {
                         Exception error = task.getError();
                         if (error != null) {
-                            Log.e(LOG_TAG, "Error when connection client", error);
+                            PLog.e(LOG_TAG, "Error when connection client", error);
                         }
                         return null;
                     }
@@ -397,7 +396,7 @@ class ParseLiveQueryClientImpl implements ParseLiveQueryClient {
                     public Void then(Task<Void> task) {
                         Exception error = task.getError();
                         if (error != null) {
-                            Log.e(LOG_TAG, "Error handling message", error);
+                            PLog.e(LOG_TAG, "Error handling message", error);
                         }
                         return null;
                     }

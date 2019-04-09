@@ -164,7 +164,7 @@ public final class SQLiteDatabase extends SQLiteCloseable {
         try {
             //final String SQL = SQLBuilder.createQuery(table, cols, selection, order, limit);
             final String SQL = SQLBuilder.createQuery(table, cols, selection, order, limit);
-            System.out.println("SQL: " + SQL);
+            //System.out.println("SQL: " + SQL);
             return statement.executeQuery(SQL);
         } catch (SQLException ex) {
             logException(ex);
@@ -394,7 +394,8 @@ public final class SQLiteDatabase extends SQLiteCloseable {
         acquireReference();
         try {
             final String SQL = SQLBuilder.createInsertWithOnConflict(table, values, conflictAlgorithm);
-            this.statement.executeUpdate(SQL);
+            //this.statement.executeUpdate(SQL);
+            this.statement.execute(SQL);
             this.connection.commit();
         } catch (SQLException ex) {
             logException(ex);
@@ -414,8 +415,9 @@ public final class SQLiteDatabase extends SQLiteCloseable {
             //final String SQL = SQLiteQueryBuilder.buildQueryString(false, table, columns, selection, null, null, order, limit);
             String SQL = SQLBuilder.createQuery(table, columns, selection, order, limit);
             for (String selectionArg : selectionArgs) {
-                SQL = SQL.replace("?", selectionArg);
+                SQL = SQL.replaceFirst("\\?", "'" + selectionArg + "'");
             }
+            //System.out.println("SQL: " + SQL);
             return statement.executeQuery(SQL);
         } catch (SQLException ex) {
             logException(ex);

@@ -172,7 +172,7 @@ class ParseSQLiteDatabase {
         synchronized (currentLock) {
             current = current.continueWithTask(task -> {
                 try {
-                    db.close();
+                    //db.close();
                 } finally {
                     tcs.setResult(null);
                 }

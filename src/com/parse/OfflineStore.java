@@ -454,9 +454,7 @@ class OfflineStore {
              * database.
              */
             String[] select = {OfflineSQLiteOpenHelper.KEY_JSON, OfflineSQLiteOpenHelper.KEY_UUID};
-            String where = String.format("%s = '%s' AND %s = '$s'", OfflineSQLiteOpenHelper.KEY_CLASS_NAME,
-                    className,
-                    OfflineSQLiteOpenHelper.KEY_OBJECT_ID, objectId);
+            String where = String.format("%s = ? AND %s = ?", OfflineSQLiteOpenHelper.KEY_CLASS_NAME, OfflineSQLiteOpenHelper.KEY_OBJECT_ID);
 
             String[] args = {className, objectId};
             jsonStringTask =

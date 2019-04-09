@@ -49,18 +49,21 @@ final class SQLBuilder {
         sb.append("SELECT ");
 
         if (cols != null) {
-            sb.append("(");
+            //sb.append("(");
             int i = 0;
             for (String c : cols) {
                 sb.append((i > 0) ? "," : "");
-                sb.append("[").append(c).append("]");
+                //sb.append("[").append(c).append("]");
+                sb.append(c);
                 i++;
             }
-            sb.append(") FROM ");
+            //sb.append(") FROM ");
+            sb.append(" FROM ");
         } else {
             sb.append("* FROM ");
         }
-        sb.append("[").append(table).append("]");
+        //sb.append("[").append(table).append("]");
+        sb.append(table);
 
         sb.append(selection != null ? " WHERE " + selection : "");
         sb.append(order != null ? " ORDER BY " + order : "");
