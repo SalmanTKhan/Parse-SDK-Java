@@ -7,7 +7,6 @@ For more information about Parse and its features, see [the website](https://par
 ### Setup
 Initialize Parse:
 ```java
-import android.content.Context;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
